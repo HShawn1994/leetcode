@@ -21,8 +21,7 @@ var maxSubArray = function(nums) {
     let cur = Number.NEGATIVE_INFINITY
     let max = Number.NEGATIVE_INFINITY
     for (let i = 0; i < nums.length; i++) {
-        if (cur < 0) cur = nums[i]
-        else cur += nums[i]
+        cur = cur < 0 ? nums[i] : cur + nums[i]
         max = Math.max(max, cur)
     }
     return max
