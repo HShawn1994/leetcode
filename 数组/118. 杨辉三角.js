@@ -19,6 +19,7 @@
 */
 
 /**
+ * 非递归
  * @param {number} numRows
  * @return {number[][]}
  */
@@ -32,6 +33,28 @@ var generate = function(numRows) {
             list[j] = (list[j] || 0) + list[j - 1]
         }
         res.push(list.slice())
+    }
+    return res
+};
+
+/**
+ * 递归
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    const res = []
+    if (!numRows) return res
+    const helper = (res, row, col) => {
+        if (res[row - 1][col - 1]) return res[row - 1][col - 1]
+        if (row === col || col === 1) return 1
+        return helper(res, row - 1, col) + helper(res, row - 1, col - 1)
+    }
+    for (let i = 1; i <= numRows; i++) {
+        res.push([])
+        for (let j = i; j > 0; j--) {
+            res[i - 1][j - 1] = helper(res, i, j)
+        }
     }
     return res
 };

@@ -47,3 +47,19 @@ var removeDuplicates = function(nums) {
     }
     return nums.length
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    let left = 0
+    while (left < nums.length) {
+        if (nums[left] == nums[left + 1]) {
+            nums.splice(left, 1)
+        } else {
+            left++
+        }
+    }
+    return nums.length
+};

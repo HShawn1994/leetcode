@@ -7,7 +7,7 @@
 输出: 5->4->3->2->1->NULL
 */
 
-/**
+/**递归
  * Definition for singly-linked list.
  * function ListNode(val) {
  *     this.val = val;
@@ -25,3 +25,26 @@ var reverseList = function(head) {
     head.next = null
     return node
 };
+
+
+* function ListNode(val) {
+  *     this.val = val;
+  *     this.next = null;
+  * }
+  */
+
+ /**迭代
+  * @param {ListNode} head
+  * @return {ListNode}
+  */
+ var reverseList = function(head) {
+     let pre = null
+     let cur = head
+     while (cur) {
+         const next = cur.next
+         cur.next = pre
+         pre = cur
+         cur = next
+     }
+     return pre
+ };
