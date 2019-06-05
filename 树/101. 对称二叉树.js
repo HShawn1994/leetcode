@@ -32,14 +32,11 @@
  * @return {boolean}
  */
 var isSymmetric = function(root) {
-    if (!root) return true
-    if (!root.left && !root.right) return true
-    if (!(root.left && root.right)) return false
-    let res = root.left.val === root.right.val
-    function isReversed (node1, node2) {
-        if (!node1 && !node2) return true
-        if (!(node1 && node2)) return false
-        return (node1.val === node2.val) && isReversed(node1.left, node2.right) && isReversed(node1.right, node2.left) 
+    const helper = (left, right) => {
+        if (!left && !right) return true
+        if (!left || !right || (left.val != right.val)) return false
+        return (left.val == right.val) && helper(left.left, right.right) && helper(right.left, left.right)
     }
-    return res && isReversed(root.left, root.right)
+    if (!root) return true
+    return helper(root.left, root.right)
 };

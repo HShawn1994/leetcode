@@ -30,19 +30,17 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    if (root === null) return []
-    let quene = [root]
-    let res = []
-    while (quene.length) {
-        let len = quene.length
-        let temp = []
-        for (let i = 0; i < len; i++) {
-            let node = quene.pop()
-            temp.push(node.val)
-            if (node.left) quene.unshift(node.left)
-            if (node.right) quene.unshift(node.right)
-        }
-        res.push(temp)
-    }
-    return res
+  if (!root) return []
+  const stack = [root], res = []
+  while (stack.length) {
+      let len = stack.length, temp = []
+      while (len--) {
+          const node = stack.pop()
+          temp.push(node.val)
+          node.left && stack.unshift(node.left)
+          node.right && stack.unshift(node.right)
+      }
+      res.push(temp)
+  }
+  return res
 };

@@ -26,13 +26,6 @@ var reverseList = function(head) {
     return node
 };
 
-
-* function ListNode(val) {
-  *     this.val = val;
-  *     this.next = null;
-  * }
-  */
-
  /**迭代
   * @param {ListNode} head
   * @return {ListNode}

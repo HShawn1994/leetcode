@@ -18,11 +18,10 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    let cur = Number.NEGATIVE_INFINITY
-    let max = Number.NEGATIVE_INFINITY
+    let res = -Infinity, cur = -Infinity
     for (let i = 0; i < nums.length; i++) {
-        cur = cur < 0 ? nums[i] : cur + nums[i]
-        max = Math.max(max, cur)
+        cur = cur >= 0 ? cur + nums[i] : nums[i]
+        res = Math.max(res, cur)
     }
-    return max
+    return res
 };

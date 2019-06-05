@@ -36,9 +36,7 @@ var solution = function(isBadVersion) {
      * @return {integer} The first bad version
      */
     return function(n) {
-        let i = 1
-        let j = n
-        let mid = parseInt((i + j) / 2)
+        let i = 1, j = n, mid = parseInt((i + j) / 2)
         while (i < j) {
           if (isBadVersion(mid)) {
             j = mid

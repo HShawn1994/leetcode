@@ -48,3 +48,22 @@ var isValid = function(s) {
     }
     return stack.length == 0
 };
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    const stack = [], left = ['(', '[', '{'], map = {
+        ']': '[',
+        '}': '{',
+        ')': '('
+    }
+    for (let i = 0; i < s.length; i++) {
+     const top = stack[stack.length - 1]
+     if (left.includes(s[i])) stack.push(s[i])
+     else if (top !== map[s[i]]) return false
+     else stack.pop()
+    }
+    return !stack.length
+};

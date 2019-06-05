@@ -27,3 +27,45 @@ var strStr = function(haystack, needle) {
     if (needle === '') return 0
     return haystack.indexOf(needle)
 };
+
+/**KMP
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+const getNext = p => {
+  const next = [-1]
+  let k = -1
+  let j = 0
+  while (j < p.length - 1) {
+      if (k === -1 || p[k] === p[j]) {
+          j++
+          k++
+          if (p[j] !== p[k]) {
+              next[j] = k
+          } else {
+              next[j] = next[k]
+          }
+      } else {
+          k = next[k]
+      }
+  }
+  return next
+}
+var strStr = function(haystack, needle) {
+  const next = getNext(needle)
+  let j = 0, i = 0
+  const iLen = haystack.length, jLen = needle.length
+  while (i < iLen && j < jLen) {
+         if (j === -1 || haystack[i] === needle[j]) {
+             i++
+             j++
+         } else {
+             j = next[j]
+         }
+  }
+  if (j === jLen) {
+      return i - j
+  }
+  return -1
+};
