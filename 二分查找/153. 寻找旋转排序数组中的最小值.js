@@ -22,14 +22,11 @@
  * @return {number}
  */
 var findMin = function(nums) {
-    let i = 0
-    if (!nums.length) return
-    let j = nums.length - 1
-    if ((nums[j] - nums[i]) >= 0) return nums[i]
-    while (i <= j) {
-        let mid = parseInt((j + i) / 2)
-        if (nums[mid] > nums[mid + 1]) return nums[mid + 1]
+    let j = nums.length - 1, i = 0
+    while (i < j) {
+        let mid = (j + i) >> 1
         if (nums[mid] < nums[j]) j = mid
-        if (nums[mid] > nums[j]) i = mid
+        else i = mid + 1
     }
-};
+    return nums[i]
+  };
