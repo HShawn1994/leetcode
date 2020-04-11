@@ -38,3 +38,19 @@
 var reverseWords = function(s) {
     return s.split(' ').filter(v => !!v).reverse().join(' ')
 };
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    let t = '', i = s.length - 1
+    while (i >= 0 && s[i] === ' ') { i-- }
+    while (i >= 0) {
+      let temp = ''
+      while(i >= 0 && s[i] !== ' ') temp = s[i--] + temp
+      t += temp
+      while (i >= 0 && s[i] === ' ') { i-- }
+      if (i >= 0) t += ' '
+    }
+    return t
+  };

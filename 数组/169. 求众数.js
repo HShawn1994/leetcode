@@ -25,3 +25,22 @@ var majorityElement = function(nums) {
     let keys = Object.keys(obj).sort((a, b) => obj[a] - obj[b])
     return Number(keys[keys.length - 1])
 };
+
+// 排序
+var majorityElement = function(nums) {
+    nums.sort((a, b) => a - b)
+    return nums[(nums.length) >>> 1]
+};
+
+// Boyer-Moore 算法
+var majorityElement = function(nums) {
+    let result = -1, count = 0
+    nums.forEach(num => {
+        if (num === result) count++
+        else if (--count < 0) {
+            result = num
+            count = 1
+        }
+    })
+    return result
+};
